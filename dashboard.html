@@ -2,73 +2,98 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Faz o site funcionar bem em celular também -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Painel de Saúde</title>
+    
+    <!-- Arquivo de estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Container principal onde fica toda a aplicação -->
 <div class="container">
+    
+    <!-- Saudação com o nome do usuário -->
+    <h1 id="saudacao">Olá! 👋</h1>
+    
+    <!-- Card com dicas de saúde que mudam automaticamente -->
+    <div class="card dica-card">
+        <small>💡 DICA SAUDÁVEL:</small>
+        <p id="dicaAlimentacao">Carregando dica...</p>
+    </div>
 
-    <h1 id="saudacao"></h1>
-    <p class="sub">Mais um dia, mais uma chance de se superar 💪</p>
-
-    <!-- ÁGUA -->
+    <!-- Card da hidratação -->
     <div class="card">
-        <h3>💧 Água ingerida</h3>
-        <h4>Beber água é muito importante para seu dia a dia.</h4>
+        <h3>💧 Hidratação</h3>
+        
+        <!-- Barra de progresso da água -->
         <div class="progress-bar">
             <div id="barraAgua" class="progress"></div>
         </div>
-        <p id="aguaTexto">0ml / 2000ml</p>
 
-        <div class="botoes">
-            <button onclick="addAgua()">+250 ml</button>
-            <button class="btn-remover" onclick="removerAgua()">-250 ml</button>
+        <!-- Texto mostrando quanto já bebeu -->
+        <p id="aguaTexto" style="text-align:center; font-weight:bold; color:#4facfe;">
+            0ml / 0ml
+        </p>
+
+        <!-- Botões para adicionar ou remover água -->
+        <div class="btn-group">
+            <button class="btn-primary" onclick="alterarHabito('agua', 250)">+250ml</button>
+            <button class="btn-danger" onclick="alterarHabito('agua', -250)">-250ml</button>
         </div>
     </div>
 
-    <!-- HÁBITOS -->
-    <div class="habit">
-    <span>🍎 Frutas</span>
-    <div class="habit-controls">
-        <button class="btn-add" onclick="addHabito('fruta')">+</button>
-        <span id="frutaQtd">0</span>
-        <button class="btn-remove" onclick="removeHabito('fruta')">-</button>
-    </div>
-</div>
-
-<div class="habit">
-    <span>🏋️ Treinos</span>
-    <div class="habit-controls">
-        <button class="btn-add" onclick="addHabito('treino')">+</button>
-        <span id="treinoQtd">0</span>
-        <button class="btn-remove" onclick="removeHabito('treino')">-</button>
-    </div>
-</div>
-
-<div class="habit">
-    <span>🥤 Lanches</span>
-    <div class="habit-controls">
-        <button class="btn-add" onclick="addHabito('pos')">+</button>
-        <span id="posQtd">0</span>
-        <button class="btn-remove" onclick="removeHabito('pos')">-</button>
-    </div>
-</div>
-
-    <!-- MOTIVAÇÃO -->
+    <!-- Card das atividades diárias -->
     <div class="card">
-        <h3>🔥 Motivação</h3>
-        <p id="motivacao"></p>
+        <h3>✅ Atividades</h3>
+
+        <!-- Controle de frutas -->
+        <div class="habit">
+            <span>🍎 Frutas</span>
+            <div class="habit-controls">
+                <button onclick="alterarHabito('fruta', -1)">-</button>
+                <span id="frutaQtd">0</span>
+                <button onclick="alterarHabito('fruta', 1)">+</button>
+            </div>
+        </div>
+
+        <!-- Controle de exercícios -->
+        <div class="habit">
+            <span>🏃 Exercícios</span>
+            <div class="habit-controls">
+                <button onclick="alterarHabito('treino', -1)">-</button>
+                <span id="treinoQtd">0</span>
+                <button onclick="alterarHabito('treino', 1)">+</button>
+            </div>
+        </div>
+
+        <!-- Controle de café -->
+        <div class="habit">
+            <span>☕ Café</span>
+            <div class="habit-controls">
+                <button onclick="alterarHabito('cafe', -1)">-</button>
+                <span id="cafeQtd">0</span>
+                <button onclick="alterarHabito('cafe', 1)">+</button>
+            </div>
+        </div>
     </div>
 
-    <!-- RESET -->
-    <div class="card">
-        <button onclick="resetarDia()">🔄 Resetar Dia</button>
+    <!-- Botões de navegação e reset -->
+    <div class="btn-group">
+        <!-- Vai para a página de histórico -->
+        <button onclick="window.location.href='historico.html'">📅 Histórico</button>
+        
+        <!-- Reseta os dados do dia -->
+        <button onclick="resetarDia()" class="btn-danger">🔄 Resetar</button>
     </div>
 
 </div>
 
+<!-- Script principal do sistema -->
 <script src="script.js"></script>
+
 </body>
 </html>

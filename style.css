@@ -1,140 +1,188 @@
+:root {
+    /* Cores principais do tema (modo escuro) */
+    --primary-color: #4facfe;
+    --secondary-color: #00f2fe;
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #999999;
+    --danger: #cf6679;
+    --border-color: #333333;
+    
+    /* Transição padrão para animações e hover */
+    --transition: all 0.3s ease;
+}
+
+/* Reset básico para evitar diferenças entre navegadores */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Estilo geral da página */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #1e1e1e, #2c2c2c);
-    color: white;
-    margin: 0;
-}
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #1e1e1e 100%);
+    color: var(--text-main);
+    min-height: 100vh;
 
-/* CONTAINER */
-.container {
-    padding: 20px;
-    max-width: 400px;
-    margin: auto;
-}
-
-/* TÍTULOS */
-h1 {
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.sub {
-    text-align: center;
-    color: #bbbbbb;
-    margin-bottom: 20px;
-}
-
-/* CARDS */
-.card {
-    background: #2f2f2f;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-/* BOTÕES */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: linear-gradient(90deg, #4facfe, #00f2fe);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-/* BOTOES LADO A LADO */
-.botoes {
+    /* Centraliza o conteúdo na tela */
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.botoes button {
-    flex: 1;
+/* Container principal da aplicação */
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 25px;
+
+    /* Pequena animação ao carregar */
+    animation: fadeIn 0.6s ease;
 }
 
-/* BOTAO REMOVER */
-.btn-remover {
-    background: linear-gradient(90deg, #ff4d4d, #ff1a1a);
+/* =========================
+   CARDS
+   ========================= */
+.card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
 }
 
-/* BARRA DE PROGRESSO */
+/* Card das dicas tem uma borda lateral para destacar */
+.dica-card {
+    border-left: 5px solid var(--primary-color);
+}
+
+/* =========================
+   BARRA DE PROGRESSO (ÁGUA)
+   ========================= */
 .progress-bar {
     width: 100%;
     height: 12px;
-    background: #555;
+    background: #333;
     border-radius: 10px;
-    margin-top: 8px;
+    margin: 15px 0;
     overflow: hidden;
 }
 
+/* Parte que cresce conforme a pessoa bebe água */
 .progress {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #4facfe, #00f2fe);
-    border-radius: 10px;
-    transition: width 0.3s;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+
+    /* Animação quando a barra aumenta */
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* HÁBITOS */
+/* =========================
+   HÁBITOS (LINHAS)
+   ========================= */
 .habit {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 12px 0;
+
+    padding: 12px 0;
+    border-bottom: 1px solid #2a2a2a;
 }
 
+/* Remove a borda do último item */
+.habit:last-child {
+    border-bottom: none;
+}
+
+/* =========================
+   BOTÕES GERAIS
+   ========================= */
+button {
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    transition: var(--transition);
+    border-radius: 12px;
+}
+
+/* Botões redondos de + e - */
 .habit-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-/* NUMERO DO CONTADOR */
-.habit-controls span {
-    font-size: 18px;
-    width: 25px;
-    text-align: center;
-}
-
-/* BOTÕES REDONDOS */
-.habit button {
-    border: none;
-    border-radius: 50%;
+.habit-controls button {
     width: 35px;
     height: 35px;
+    border-radius: 50%;
+    background: #333;
+    color: white;
     font-size: 18px;
-    cursor: pointer;
 }
 
-/* BOTÃO AZUL */
-.btn-add {
-    background: #4facfe;
+/* Efeito quando passa o mouse */
+.habit-controls button:hover {
+    background: var(--primary-color);
+}
+
+/* =========================
+   GRUPO DE BOTÕES (lado a lado)
+   ========================= */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-group button {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    background: #333;
     color: white;
 }
 
-/* BOTÃO VERMELHO */
-.btn-remove {
-    background: #ff4d4d;
-    color: white;
+/* =========================
+   CORES ESPECÍFICAS DE BOTÕES
+   ========================= */
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
 }
 
-/* RESPONSIVO CELULAR */
-@media (max-width: 500px) {
-    .container {
-        padding: 15px;
-    }
+/* Botão de reset / perigo */
+.btn-danger {
+    background: rgba(207, 102, 121, 0.2) !important;
+    color: var(--danger) !important;
+    border: 1px solid var(--danger) !important;
+}
 
-    h1 {
-        font-size: 22px;
-    }
+.btn-danger:hover {
+    background: var(--danger) !important;
+    color: white !important;
+}
 
-    button {
-        font-size: 14px;
-        padding: 10px;
+/* =========================
+   HISTÓRICO
+   ========================= */
+.card-hist {
+    background: #252525;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+
+    /* Borda lateral só pra dar destaque */
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Animação quando a página aparece */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

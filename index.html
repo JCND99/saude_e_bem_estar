@@ -2,19 +2,21 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Saúde Academia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde Academia - Entrar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>Bem-vindo</h1>
-        <p>Digite seu nome para começar</p>
-
-        <input type="text" id="nome" placeholder="Seu nome">
-        <button onclick="salvarNome()">Entrar</button>
+        <h1 style="margin-top: 50px;">Bem-vindo</h1>
+        <p style="text-align:center; color:#999; margin-bottom:30px;">Configure seu perfil para começar</p>
+        
+        <div class="card">
+            <input type="text" id="nome" placeholder="Seu nome">
+            <input type="number" id="peso" placeholder="Seu peso (kg)">
+            <button class="btn-primary" style="width:100%; padding:15px;" onclick="configurarPerfil()">Começar Jornada</button>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
