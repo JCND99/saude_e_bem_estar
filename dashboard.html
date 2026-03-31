@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Saúde</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1 id="saudacao"></h1>
+    <p class="sub">Mais um dia, mais uma chance de se superar 💪</p>
+
+    <!-- ÁGUA -->
+    <div class="card">
+        <h3>💧 Água ingerida</h3>
+        <h4>Beber água é muito importante para seu dia a dia.</h4>
+        <div class="progress-bar">
+            <div id="barraAgua" class="progress"></div>
+        </div>
+        <p id="aguaTexto">0ml / 2000ml</p>
+
+        <div class="botoes">
+            <button onclick="addAgua()">+250 ml</button>
+            <button class="btn-remover" onclick="removerAgua()">-250 ml</button>
+        </div>
+    </div>
+
+    <!-- HÁBITOS -->
+    <div class="habit">
+    <span>🍎 Frutas</span>
+    <div class="habit-controls">
+        <button class="btn-add" onclick="addHabito('fruta')">+</button>
+        <span id="frutaQtd">0</span>
+        <button class="btn-remove" onclick="removeHabito('fruta')">-</button>
+    </div>
+</div>
+
+<div class="habit">
+    <span>🏋️ Treinos</span>
+    <div class="habit-controls">
+        <button class="btn-add" onclick="addHabito('treino')">+</button>
+        <span id="treinoQtd">0</span>
+        <button class="btn-remove" onclick="removeHabito('treino')">-</button>
+    </div>
+</div>
+
+<div class="habit">
+    <span>🥤 Lanches</span>
+    <div class="habit-controls">
+        <button class="btn-add" onclick="addHabito('pos')">+</button>
+        <span id="posQtd">0</span>
+        <button class="btn-remove" onclick="removeHabito('pos')">-</button>
+    </div>
+</div>
+
+    <!-- MOTIVAÇÃO -->
+    <div class="card">
+        <h3>🔥 Motivação</h3>
+        <p id="motivacao"></p>
+    </div>
+
+    <!-- RESET -->
+    <div class="card">
+        <button onclick="resetarDia()">🔄 Resetar Dia</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
